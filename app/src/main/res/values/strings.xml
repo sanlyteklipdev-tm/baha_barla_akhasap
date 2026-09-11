@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Baha barla</string>
+
+    <!-- Main -->
+    <string name="barcode">Barcode</string>
+    <string name="search_field_label">Product name or barcode</string>
+    <string name="result_count_fmt">Found: %1$d</string>
+    <string name="scan">SCAN</string>
+    <string name="search">SEARCH</string>
+    <string name="settings">Settings</string>
+
+    <!-- Scanner -->
+    <string name="scanner">Scanner</string>
+    <string name="scan_hint">Haryt barkodyny okat!</string>
+    <string name="flash">FLASH</string>
+    <string name="back">Back</string>
+
+    <!-- Settings -->
+    <string name="device_id_fmt">ID : %1$s</string>
+    <string name="server_address">Server Address</string>
+    <string name="database_name">Database Name</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="save_settings">SAVE SETTINGS</string>
+    <string name="settings_saved">Settings saved</string>
+    <string name="settings_incomplete">Fill in server, database and user name</string>
+
+    <!-- Result card -->
+    <string name="product_photo">Product photo</string>
+    <string name="currency_fmt">%1$s TMM</string>
+
+    <!-- Errors -->
+    <string name="err_empty_barcode">Enter a product name or scan a barcode</string>
+    <string name="err_no_settings">Set up the database connection in Settings</string>
+    <string name="err_no_network">No network connection</string>
+    <string name="err_connect">Cannot reach the server. Check the address and the network.</string>
+    <string name="err_auth">Login failed. Check user name and password.</string>
+    <string name="err_query">Database query failed: %1$s</string>
+    <string name="err_not_found">Product not found</string>
+    <string name="err_camera">Cannot start the camera</string>
+    <string name="err_camera_permission">Camera permission is required to scan</string>
+    <string name="err_no_flash">This device has no flash</string>
+</resources>

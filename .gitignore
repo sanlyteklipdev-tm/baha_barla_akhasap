@@ -1,0 +1,26 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Android module build output
+/app/build
+.kotlin
+
+# .NET bridge service
+server/**/bin/
+server/**/obj/
+
+# Machine-local secrets (SQL password)
+appsettings.Local.json

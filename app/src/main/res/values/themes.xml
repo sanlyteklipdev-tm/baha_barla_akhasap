@@ -1,0 +1,41 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.BahaBarla" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue_appbar</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:colorBackground">@color/page_bg</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/blue_status</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+    <style name="Theme.BahaBarla" parent="Base.Theme.BahaBarla" />
+
+    <!-- Blue app bar shared by all three screens -->
+    <style name="Widget.BahaBarla.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/blue_appbar</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="android:theme">@style/ThemeOverlay.Material3.Dark.ActionBar</item>
+        <item name="titleTextAppearance">@style/TextAppearance.BahaBarla.Toolbar</item>
+    </style>
+
+    <style name="TextAppearance.BahaBarla.Toolbar" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Underlined field, matching the screenshots -->
+    <style name="Widget.BahaBarla.Field" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/bg_edit_underline</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:paddingEnd">2dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:minHeight">44dp</item>
+    </style>
+
+    <style name="TextAppearance.BahaBarla.FieldLabel" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textColor">@color/text_hint</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

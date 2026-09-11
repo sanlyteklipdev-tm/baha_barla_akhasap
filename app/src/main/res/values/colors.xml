@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Sampled from the reference screenshots -->
+    <color name="blue_appbar">#1691FB</color>
+    <color name="blue_status">#1071D8</color>
+    <color name="blue_scan">#174465</color>
+    <color name="blue_search">#2A88B8</color>
+    <color name="blue_flash">#1691FB</color>
+
+    <color name="page_bg">#FAFAFA</color>
+    <color name="card_white">#FFFFFF</color>
+
+    <color name="orange_card">#F67800</color>
+    <color name="orange_id">#F26522</color>
+
+    <color name="red_price">#E52200</color>
+    <color name="red_error">#E52200</color>
+
+    <color name="text_primary">#212121</color>
+    <color name="text_hint">#757575</color>
+    <color name="underline">#9E9E9E</color>
+
+    <!-- Text drawn on the orange result card -->
+    <color name="card_text">#FFFFFF</color>
+</resources>

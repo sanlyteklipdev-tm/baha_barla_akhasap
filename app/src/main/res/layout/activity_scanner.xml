@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg"
+    android:orientation="vertical"
+    tools:context=".ScannerActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.BahaBarla.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationContentDescription="@string/back"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="@string/scanner" />
+
+    <TextView
+        android:id="@+id/tvHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/scan_hint"
+        android:textColor="@color/red_error"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        tools:visibility="visible" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="230dp"
+        android:layout_height="350dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp">
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:implementationMode="compatible" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFlash"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="28dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:text="@string/flash"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/blue_flash"
+        app:cornerRadius="6dp" />
+</LinearLayout>
