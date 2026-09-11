@@ -1,5 +1,6 @@
 using System.Globalization;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Hosting.WindowsServices;
 
 // Baha barla bridge.
 //
@@ -8,8 +9,16 @@ using Microsoft.Data.SqlClient;
 // Windows still does, so this service sits in the middle -- it holds the
 // database credentials, runs one fixed query, and hands the phone plain JSON.
 
-var builder = WebApplication.CreateBuilder(args);
-builder.Host.UseWindowsService(options => options.ServiceName = "BahaBarlaApi");
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    // A Windows service starts in system32. The appsettings files are read
+    // while the builder is built, so the content root has to be right here --
+    // setting it afterwards is too late and the service would run with empty
+    // Sql settings.
+    ContentRootPath = WindowsServiceHelpers.IsWindowsService() ? AppContext.BaseDirectory : default
+});
+builder.Services.AddWindowsService(options => options.ServiceName = "BahaBarlaApi");
 
 // The SQL password belongs to this machine, not to the repository.
 // appsettings.Local.json is git-ignored and overrides anything below it.
@@ -61,11 +70,34 @@ const string SearchSql = """
     DECLARE @like NVARCHAR(410) =
         '%' + REPLACE(REPLACE(REPLACE(@q, '[', '[[]'), '%', '[%]'), '_', '[_]') + '%';
 
+    -- The card also shows the price in dollars. The accounting program keeps
+    -- one rate per day in tbl_mg_exchange_rate, filed under the firm's own
+    -- currency (TMM), and exch_op_type says how to apply it: 1 = '/', 2 = '*'.
+    -- Today's row is the one in force; if nobody entered a rate yet, the
+    -- dollar price simply stays empty rather than being guessed.
+    DECLARE @base INT = ISNULL((
+        SELECT TOP 1 currency_id FROM dbo.tbl_mg_period WITH (NOLOCK)
+        WHERE p_active = 1 ORDER BY p_id DESC), 1);
+
+    DECLARE @rate DECIMAL(19, 6), @op INT;
+    SELECT TOP 1 @rate = exch_value, @op = exch_op_type
+    FROM dbo.tbl_mg_exchange_rate WITH (NOLOCK)
+    WHERE currency_id = @base AND exch_date <= CAST(GETDATE() AS DATE)
+    ORDER BY exch_date DESC, exch_id DESC;
+
     SELECT TOP 50
         m.material_name                          AS name,
         m.material_code                          AS code,
         ISNULL(b.bar_barcode, '')                AS barcode,
         ISNULL(p.price_value, 0)                 AS price,
+        CASE
+            -- A price already kept in dollars needs no conversion.
+            WHEN p.currency_id = 2 THEN ISNULL(p.price_value, 0)
+            WHEN @rate IS NULL OR @rate = 0 THEN NULL
+            WHEN @op = 2 THEN ISNULL(p.price_value, 0) * @rate
+            ELSE ISNULL(p.price_value, 0) / @rate
+        END                                      AS price_usd,
+        @rate                                    AS rate,
         ISNULL(w.wh_name, '')                    AS warehouse,
         ISNULL(t.mat_whousetotal_amount, 0)      AS stock
     FROM dbo.tbl_mg_materials m WITH (NOLOCK)
@@ -76,7 +108,7 @@ const string SearchSql = """
         ORDER BY bb.bar_id
     ) b
     OUTER APPLY (
-        SELECT TOP 1 pr.price_value
+        SELECT TOP 1 pr.price_value, pr.currency_id
         FROM dbo.tbl_mg_mat_price pr WITH (NOLOCK)
         WHERE pr.material_id = m.material_id
           AND pr.price_type_id = 2      -- tbl_mg_price_type: 2 = Satys (sale)
@@ -158,6 +190,8 @@ app.MapGet("/search", async (string? q, string? db) =>
                 code = Text(reader["code"]),
                 barcode = Text(reader["barcode"]),
                 price = Number(reader["price"]),
+                priceUsd = Number(reader["price_usd"]),
+                rate = Number(reader["rate"]),
                 warehouse = Text(reader["warehouse"]),
                 stock = Number(reader["stock"])
             });

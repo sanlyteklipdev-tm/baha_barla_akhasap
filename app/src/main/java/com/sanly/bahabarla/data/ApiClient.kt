@@ -80,6 +80,8 @@ object ApiClient {
                         code = row.optString("code"),
                         barcode = row.optString("barcode"),
                         price = row.optString("price"),
+                        priceUsd = row.optString("priceUsd"),
+                        rate = row.optString("rate"),
                         warehouse = row.optString("warehouse"),
                         stock = row.optString("stock")
                     )

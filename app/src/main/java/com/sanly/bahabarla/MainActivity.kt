@@ -155,6 +155,11 @@ class MainActivity : AppCompatActivity() {
             tvName.text = product.name
             tvBarcode.text = product.barcode.ifEmpty { product.code }
             tvPrice.text = getString(R.string.currency_fmt, product.price)
+            // No rate entered for today means no dollar price -- hide the row
+            // rather than show a zero that looks like a real number.
+            tvPriceUsd.text = getString(R.string.currency_usd_fmt, product.priceUsd)
+            rowPriceUsd.visibility =
+                if (product.priceUsd.isEmpty()) View.GONE else View.VISIBLE
             tvField1.text = product.warehouse
             // tvField2 / tvField3 stay hidden until their columns are decided.
             tvCategory.text = product.stock

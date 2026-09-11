@@ -28,6 +28,7 @@
     <!-- Result card -->
     <string name="product_photo">Product photo</string>
     <string name="currency_fmt">%1$s TMM</string>
+    <string name="currency_usd_fmt">%1$s USD</string>
 
     <!-- Errors -->
     <string name="err_empty_barcode">Enter a product name or scan a barcode</string>
