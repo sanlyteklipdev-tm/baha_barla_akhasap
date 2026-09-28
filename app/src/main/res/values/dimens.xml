@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The photo box on the result card. Shared with MainActivity, which sizes
+         the download it decodes from it. -->
+    <dimen name="card_photo_width">128dp</dimen>
+    <dimen name="card_photo_height">118dp</dimen>
+    <!-- Space between the cards a search lists -->
+    <dimen name="card_gap">12dp</dimen>
+</resources>

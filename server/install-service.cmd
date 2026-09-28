@@ -11,9 +11,8 @@ if not exist "%EXE%" (
   echo Nothing published at %APPDIR% -- run dotnet publish first.
   exit /b 1
 )
-if not exist "%APPDIR%\appsettings.Local.json" (
-  echo WARNING: appsettings.Local.json is missing -- the SQL password is not set.
-)
+REM No SQL password is needed here any more: every request carries the login
+REM typed on the phone. For another shop use server\package instead.
 
 sc.exe stop BahaBarlaApi >nul 2>&1
 sc.exe delete BahaBarlaApi >nul 2>&1

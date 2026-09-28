@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Stands in the photo box while a picture loads, and stays there for the
+     products that have none. Drawn at its own size so the box keeps its
+     rounded white background around it. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="52dp"
+    android:height="52dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@color/photo_placeholder"
+        android:fillType="evenOdd"
+        android:pathData="M3,4h18v16H3V4zM5,6v12h14V6H5z" />
+    <path
+        android:fillColor="@color/photo_placeholder"
+        android:pathData="M8.5,8.5c0.83,0 1.5,0.67 1.5,1.5s-0.67,1.5 -1.5,1.5 -1.5,-0.67 -1.5,-1.5 0.67,-1.5 1.5,-1.5z" />
+    <path
+        android:fillColor="@color/photo_placeholder"
+        android:pathData="M6,17l3.5,-4.5 2.5,3 3,-3.5 3,5z" />
+</vector>

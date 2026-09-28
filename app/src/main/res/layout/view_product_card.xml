@@ -4,7 +4,8 @@
     android:id="@+id/productCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_card_orange"
+    android:background="@drawable/bg_card_result"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:padding="10dp"
     android:visibility="gone"
@@ -30,12 +31,13 @@
 
         <ImageView
             android:id="@+id/ivPhoto"
-            android:layout_width="128dp"
-            android:layout_height="118dp"
+            android:layout_width="@dimen/card_photo_width"
+            android:layout_height="@dimen/card_photo_height"
             android:layout_gravity="top"
             android:background="@drawable/bg_photo_placeholder"
             android:contentDescription="@string/product_photo"
-            android:scaleType="centerCrop" />
+            android:scaleType="center"
+            android:src="@drawable/ic_photo_placeholder" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -63,37 +65,12 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:maxLines="1"
-                    android:textColor="@color/card_text"
-                    android:textSize="14sp"
+                    android:textColor="@color/card_text_muted"
+                    android:textSize="13sp"
                     tools:text="01024" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:contentDescription="@null"
-                    android:src="@drawable/ic_price_tag" />
-
-                <TextView
-                    android:id="@+id/tvPrice"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:textColor="@color/red_price"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="1170,00 TMM" />
-            </LinearLayout>
-
+            <!-- Dollars first, manat under them. -->
             <LinearLayout
                 android:id="@+id/rowPriceUsd"
                 android:layout_width="match_parent"
@@ -108,19 +85,36 @@
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_price_tag" />
+                    android:src="@drawable/ic_money" />
 
-                <TextView
-                    android:id="@+id/tvPriceUsd"
+                <EditText
+                    android:id="@+id/etPriceUsd"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
+                    android:background="@null"
+                    android:cursorVisible="false"
+                    android:importantForAutofill="no"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
                     android:maxLines="1"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
                     android:textColor="@color/red_price"
                     android:textSize="17sp"
                     android:textStyle="bold"
-                    tools:text="60,00 USD" />
+                    tools:ignore="LabelFor"
+                    tools:text="34,67" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/usd"
+                    android:textColor="@color/red_price"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -134,20 +128,38 @@
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:contentDescription="@null"
-                    android:src="@drawable/ic_field_generic" />
+                    android:src="@drawable/ic_price_tag" />
 
-                <TextView
-                    android:id="@+id/tvField1"
+                <EditText
+                    android:id="@+id/etPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
+                    android:background="@null"
+                    android:cursorVisible="false"
+                    android:importantForAutofill="no"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal"
                     android:maxLines="1"
-                    android:textColor="@color/card_text"
-                    android:textSize="17sp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:textColor="@color/red_price"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    tools:text="0" />
+                    tools:ignore="LabelFor"
+                    tools:text="1.170,00" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/tmt"
+                    android:textColor="@color/red_price"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -227,6 +239,37 @@
                     android:textSize="17sp"
                     android:textStyle="bold"
                     tools:text="Topar kod" />
+            </LinearLayout>
+
+            <!-- Purchase price, disguised: no label, and a random prefix in
+                 front of it so a customer looking at the screen cannot read it. -->
+            <LinearLayout
+                android:id="@+id/rowPurchase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_purchase" />
+
+                <TextView
+                    android:id="@+id/tvPurchase"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:textColor="@color/card_text_muted"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    tools:text="384K1250" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

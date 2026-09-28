@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- Machine-local overrides (this office's old sa password) must never end
+         up in a published folder, least of all a package sent to another shop. -->
+    <Content Update="appsettings.Local.json" CopyToPublishDirectory="Never" />
+    <Content Update="appsettings.Development.json" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.3" />
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="10.0.12" />
   </ItemGroup>

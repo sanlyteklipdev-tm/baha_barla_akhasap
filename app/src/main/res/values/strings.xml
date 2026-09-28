@@ -8,6 +8,9 @@
     <string name="scan">SCAN</string>
     <string name="search">SEARCH</string>
     <string name="settings">Settings</string>
+    <string name="warehouse">Warehouse</string>
+    <string name="no_warehouse">—</string>
+    <string name="err_no_warehouses">Could not load warehouses</string>
 
     <!-- Scanner -->
     <string name="scanner">Scanner</string>
@@ -21,14 +24,25 @@
     <string name="database_name">Database Name</string>
     <string name="user_name">User Name</string>
     <string name="password">Password</string>
+    <string name="usd_rate">Dollar Rate (TMT for 1 USD)</string>
     <string name="save_settings">SAVE SETTINGS</string>
     <string name="settings_saved">Settings saved</string>
-    <string name="settings_incomplete">Fill in server, database and user name</string>
+    <string name="settings_incomplete">Fill in server, database, user name and password</string>
+    <string name="settings_saved_unchecked">Saved, but the server did not answer, so the login is not checked yet</string>
+    <string name="checking_login">CHECKING…</string>
+    <string name="log_out">LOG OUT</string>
+    <string name="logged_out">Logged out</string>
 
     <!-- Result card -->
     <string name="product_photo">Product photo</string>
-    <string name="currency_fmt">%1$s TMM</string>
-    <string name="currency_usd_fmt">%1$s USD</string>
+    <string name="replace_photo_title">Product photo</string>
+    <string name="replace_photo_message">Take a new photo for \"%1$s\"?</string>
+    <string name="replace_photo_confirm">TAKE PHOTO</string>
+    <string name="cancel">CANCEL</string>
+    <string name="photo_saving">Saving photo…</string>
+    <string name="photo_saved">Photo saved</string>
+    <string name="tmt">TMT</string>
+    <string name="usd">USD</string>
 
     <!-- Errors -->
     <string name="err_empty_barcode">Enter a product name or scan a barcode</string>
@@ -36,9 +50,13 @@
     <string name="err_no_network">No network connection</string>
     <string name="err_connect">Cannot reach the server. Check the address and the network.</string>
     <string name="err_auth">Login failed. Check user name and password.</string>
+    <string name="err_no_access">This login has no access to the database</string>
+    <string name="err_photo_no_access">This login is not allowed to change photos</string>
     <string name="err_query">Database query failed: %1$s</string>
     <string name="err_not_found">Product not found</string>
     <string name="err_camera">Cannot start the camera</string>
     <string name="err_camera_permission">Camera permission is required to scan</string>
     <string name="err_no_flash">This device has no flash</string>
+    <string name="err_photo_save">Could not save the photo. Check the connection.</string>
+    <string name="err_photo_read">Could not read the photo from the camera</string>
 </resources>

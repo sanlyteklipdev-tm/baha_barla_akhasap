@@ -21,6 +21,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.BahaBarla"
         tools:targetApi="31">
         <activity
@@ -44,6 +45,17 @@
             android:name=".SettingsActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
+
+        <!-- Hands the camera app somewhere to write the product photo. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.photos"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

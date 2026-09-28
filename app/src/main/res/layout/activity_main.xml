@@ -115,18 +115,11 @@
             tools:text="Product not found"
             tools:visibility="visible" />
 
-        <include
-            android:id="@+id/cardResult"
-            layout="@layout/view_product_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp" />
-
         <TextView
             android:id="@+id/tvResultCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:textAppearance="@style/TextAppearance.BahaBarla.FieldLabel"
             android:textSize="15sp"
             android:visibility="gone"
@@ -137,13 +130,13 @@
             android:id="@+id/rvResults"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:clipToPadding="false"
             android:paddingBottom="12dp"
             android:visibility="gone"
-            tools:itemCount="3"
-            tools:listitem="@layout/item_product"
+            tools:itemCount="2"
+            tools:listitem="@layout/view_product_card"
             tools:visibility="visible" />
     </LinearLayout>
 </LinearLayout>

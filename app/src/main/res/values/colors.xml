@@ -13,7 +13,8 @@
     <color name="page_bg">#FAFAFA</color>
     <color name="card_white">#FFFFFF</color>
 
-    <color name="orange_card">#F67800</color>
+    <!-- Result card: the app-bar blue at 50% opacity (80 = alpha 0.5). -->
+    <color name="card_blue">#801691FB</color>
     <color name="orange_id">#F26522</color>
 
     <color name="red_price">#E52200</color>
@@ -23,6 +24,20 @@
     <color name="text_hint">#757575</color>
     <color name="underline">#9E9E9E</color>
 
-    <!-- Text drawn on the orange result card -->
-    <color name="card_text">#FFFFFF</color>
+    <!-- Text drawn on the orange result card. Sampled from the reference
+         screenshot 4_search_result.jpg: dark brown, not white. -->
+    <color name="card_text">#772B00</color>
+    <!-- The barcode sits quieter than the rest of the card -->
+    <color name="card_text_muted">#A85200</color>
+
+    <!-- Card icons carry their own colours on the reference screens -->
+    <color name="icon_barcode">#2B2B2B</color>
+    <color name="icon_tag">#1565C0</color>
+    <color name="icon_money_dark">#2E7D32</color>
+    <color name="icon_money_light">#66BB6A</color>
+    <color name="icon_generic">#5D4037</color>
+
+    <!-- The empty photo box: the card's own brown, faded back so it reads as a
+         placeholder and not as content. -->
+    <color name="photo_placeholder">#40772B00</color>
 </resources>

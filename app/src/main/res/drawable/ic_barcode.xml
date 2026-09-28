@@ -4,6 +4,6 @@
     android:viewportWidth="24"
     android:viewportHeight="24">
     <path
-        android:fillColor="#FFFFFFFF"
+        android:fillColor="@color/icon_barcode"
         android:pathData="M2,5h2v14h-2z M5.5,5h1v14h-1z M8,5h2v14h-2z M11.5,5h1v14h-1z M14,5h2v14h-2z M17.5,5h1v14h-1z M20,5h2v14h-2z" />
 </vector>

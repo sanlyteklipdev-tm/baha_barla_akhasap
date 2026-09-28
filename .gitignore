@@ -25,3 +25,6 @@ server/**/obj/
 
 # Machine-local secrets (SQL password)
 appsettings.Local.json
+
+# Installation package for other shops (server/package/build-package.ps1)
+/dist

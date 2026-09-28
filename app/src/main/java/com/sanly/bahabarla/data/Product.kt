@@ -6,10 +6,11 @@ data class Product(
     val code: String,
     val barcode: String,
     val price: String,
-    /** The same price converted with today's rate; empty when no rate is on file. */
-    val priceUsd: String,
-    /** The rate that conversion used, for showing alongside it. */
-    val rate: String,
-    val warehouse: String,
-    val stock: String
+    /** Purchase price in whole manats, digits only; empty when none is on file. */
+    val purchase: String,
+    val stock: String,
+    /** Needed to ask the bridge for the photo; the card shows nothing else with it. */
+    val materialId: Int,
+    /** Whether a photo is on file, so the card only asks for one that exists. */
+    val hasImage: Boolean
 )
